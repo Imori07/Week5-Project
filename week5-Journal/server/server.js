@@ -38,9 +38,9 @@ app.get('/reviews', async (req, res) => {
   try {
     const { rows } = await db.query(`SELECT * FROM reviews`);
     if (rows.length === 0) {
-      res.status(404).json({ message: 'Comment not found' });
+      return res.status(404).json({ message: 'No reviews found' });
     }
-    res.json(query.rows);
+    res.json(rows);
   } catch (error) {
     res.status(500).json({ message: 'Server is borked' });
   }
