@@ -1,8 +1,8 @@
 // Import setup
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import pg from "pg";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import pg from 'pg';
 dotenv.config();
 
 // Initialize Express app
@@ -21,8 +21,8 @@ app.listen(PORT, () => {
 });
 
 // Root route to confirm server is running
-app.get("/", (req, res) => {
-  res.send("This is the root route");
+app.get('/', (req, res) => {
+  res.send('This is the root route');
 });
 
 // Connection string
@@ -34,13 +34,20 @@ export const db = new pg.Pool({
 });
 
 // Read from database
-app.get("/reviews", async (req, res) => {
-  const query = await db.query(`SELECT * FROM reviews`);
-  res.json(query.rows);
+app.get('/reviews', async (req, res) => {
+  try {
+    const { rows } = await db.query(`SELECT * FROM reviews`);
+    if (rows.length === 0) {
+      res.status(404).json({ message: 'Comment not found' });
+    }
+    res.json(query.rows);
+  } catch (error) {
+    res.status(500).json({ message: 'Server is borked' });
+  }
 });
 
 // Create new data (Insert new review entry)
-app.post("/reviews", async (req, res) => {
+app.post('/reviews', async (req, res) => {
   const { name, review_description, image_url, rating } = req.body; // Get review details from the request body
 
   // Insert the new review entry into the database
