@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./src/app.js" defer></script>
+    <title>Journal</title>
+  </head>
+  <body>
+    <h1> Travel log</h1>
+      <form id="review_form">
+          
+          <label for="username">Username:</label>
+          <input
+        type="text"
+        id="name"
+        name="username"
+        placeholder="Write your full name"
+        
+      />
+      <label for="Review">Review:</label>
+      <textarea
+            name="description"
+            id="review_description"
+            rows="10"
+            placeholder="Please leave a comment"
+            required
+          >
+</textarea>
+
+      <label for="upload-url">URL:</label>
+        <input type="url" id="image_url" name="upload-url" placeholder="enter your image URL">
+        
+<!-- Ask team if we need this option -->
+<label for="rating">Rating(from 1 to 5):</label>
+<select id="rating" name="rating" required>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+<button type="submit">Submit</button>
+
+<div id="comment-container">Comment container</div>
+          
+  </body>
+</html>
+
+
+
+
