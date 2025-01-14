@@ -130,7 +130,7 @@ const postReviews = async () => {
     rating: 4,
   };
 
-  const response = await fetch("https://week5-project-09nc.onrender.com", {
+  const response = await fetch(`${BASE_URL}/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
