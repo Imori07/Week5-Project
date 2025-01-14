@@ -115,10 +115,9 @@ const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
   commentContainer.innerHTML = '';
-  console.log(data);
   data
-    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-    .forEach((review) => console.log(createReview(review)));
+    .sort((a, b) => b.created_at - a.created_at)
+    .forEach((review) => createReview(review));
 };
 
 fetchReviews();
