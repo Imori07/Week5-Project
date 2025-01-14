@@ -106,16 +106,15 @@
 
 // // postReviews();
 
-const form = document.getElementById("review_form");
-const commentContainer = document.getElementById("comment-container");
-
+const form = document.getElementById('review_form');
+const commentContainer = document.getElementById('comment-container');
 
 const BASE_URL = 'https://week5-project-09nc.onrender.com';
 
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
-  commentContainer.innerHTML = "";
+  commentContainer.innerHTML = '';
   console.log(data);
   data
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
@@ -124,23 +123,20 @@ const fetchReviews = async () => {
 
 fetchReviews();
 
-
 const postReviews = async (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
   const formEntries = Object.fromEntries(formData);
 
-  console.log(formEntries);
-
   const response = await fetch(`${BASE_URL}/reviews`, {
     method: 'POST',
-
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(formEntries),
   });
+
   try {
     if (response.ok) {
       await fetchReviews();
@@ -149,31 +145,30 @@ const postReviews = async (e) => {
     }
   } catch (error) {
     console.log('Error:', error);
-    console.log('Error:', error);
   }
 };
 
 form.addEventListener('submit', postReviews);
 
 function createReview(review) {
-  const reviewDiv = document.createElement("div");
-  reviewDiv.className = "review";
+  const reviewDiv = document.createElement('div');
+  reviewDiv.className = 'review';
   reviewDiv.dataset.id = review.id;
 
-  const username = createParagraph("username", review.username);
+  const username = createParagraph('username', review.username);
 
   const description = createParagraph(
-    "review-description",
+    'review-description',
     review.review_description
   );
 
-  const image = createImage("review-image", review.image_url);
+  const image = createImage('review-image', review.image_url);
 
-  const formattedDate = new Intl.DateTimeFormat("en-GB").format(
+  const formattedDate = new Intl.DateTimeFormat('en-GB').format(
     new Date(review.created_at)
   );
 
-  const reviewDate = createParagraph("date", formattedDate);
+  const reviewDate = createParagraph('date', formattedDate);
 
   reviewDiv.appendChild(username);
   reviewDiv.appendChild(description);
@@ -185,14 +180,14 @@ function createReview(review) {
 }
 
 function createParagraph(className, text) {
-  const p = document.createElement("p");
+  const p = document.createElement('p');
   p.className = className;
   p.textContent = text;
   return p;
 }
 
 function createImage(className, url) {
-  const image = document.createElement("img");
+  const image = document.createElement('img');
   image.className = className;
   image.src = url;
   return image;
