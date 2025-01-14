@@ -3,34 +3,26 @@ h1 {
   top: 20px;
   text-align: center;
   width: 100%;
-  margin: 0;
   font-size: 40px;
   font-weight: bold;
   color: #f8efef;
 }
 body {
-  background-image: url('https://img.freepik.com/premium-photo/tropical-island-with-palm-trees-sunset-background_1188452-2551.jpg?w=1060');
-  background-size: cover;
+  background-color: rgb(10, 56, 120);
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-  padding-left: 20px;
 }
 
 #review_form {
+  margin-top: 20%;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: px;
+  width: 30%;
+  max-width: auto;
   box-sizing: border-box;
 }
-
+/* //form style taken from gpt// */
 #review_form label {
   display: block;
   margin-bottom: 5px;
@@ -85,105 +77,25 @@ body {
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
 }
 
-#review_form {
-  background-color: #ffffff;
+#comment-container {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 50%;
+  height: 100vh;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 60%;
-  max-width: 500px;
+}
+
+.review {
+  background-color: #ffffff;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
-
-/* #comment-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30%;
-  height: 100vh;
-  background-color: #f8f8f8;
-  border-left: 2px solid #ccc;
-  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  overflow-y: auto;
-  font-family: Arial, sans-serif;
-} */
-
-/* Media Queries */
-
-/* Large desktops (1200px and up) */
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 40px;
-  }
-
-  #review_form {
-    max-width: 500px;
-  }
-}
-
-/* Tablets (768px to 1199px) */
-@media (max-width: 1199px) and (min-width: 768px) {
-  h1 {
-    font-size: 24px;
-  }
-
-  #review_form {
-    max-width: 400px;
-    padding: 15px;
-  }
-
-  #review_form input,
-  #review_form textarea,
-  #review_form select {
-    font-size: 13px;
-  }
-
-  #review_form button {
-    font-size: 13px;
-  }
-}
-
-/* Large Mobile Phones (480px to 767px) */
-@media (max-width: 767px) and (min-width: 480px) {
-  h1 {
-    font-size: 20px;
-    top: 15px;
-  }
-
-  #review_form {
-    padding: 10px;
-  }
-
-  #review_form input,
-  #review_form textarea,
-  #review_form select {
-    font-size: 12px;
-  }
-
-  #review_form button {
-    font-size: 12px;
-  }
-}
-
-/* Small Mobile Phones (below 480px) */
-@media (max-width: 479px) {
-  h1 {
-    font-size: 18px;
-    top: 10px;
-  }
-
-  #review_form {
-    padding: 10px;
-  }
-
-  #review_form input,
-  #review_form textarea,
-  #review_form select {
-    font-size: 12px;
-  }
-
-  #review_form button {
-    font-size: 12px;
-  }
+.review-image {
+  height: 20rem;
+  width: 30rem;
 }
