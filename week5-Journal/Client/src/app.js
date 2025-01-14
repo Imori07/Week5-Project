@@ -109,8 +109,7 @@
 const form = document.getElementById('review_form');
 const commentContainer = document.getElementById('comment-container');
 
-const BASE_URL = 'http://localhost:8080';
-// const BASE_URL = 'https://week5-project-09nc.onrender.com';
+const BASE_URL = 'https://week5-project-09nc.onrender.com';
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
