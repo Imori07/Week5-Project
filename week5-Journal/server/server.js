@@ -27,7 +27,6 @@ app.get('/', (req, res) => {
 
 // Connection string
 const dbConnectionString = process.env.DATABASE_URL;
-console.log(process.env.DATABASE_URL);
 
 // Databse pool setup
 export const db = new pg.Pool({

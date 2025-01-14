@@ -9,7 +9,7 @@ h1 {
   color: #f8efef;
 }
 body {
-  background-image: url("https://img.freepik.com/premium-photo/tropical-island-with-palm-trees-sunset-background_1188452-2551.jpg?w=1060");
+  background-image: url('https://img.freepik.com/premium-photo/tropical-island-with-palm-trees-sunset-background_1188452-2551.jpg?w=1060');
   background-size: cover;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -83,6 +83,16 @@ body {
   border-color: #4caf50;
   outline: none;
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+}
+
+#review_form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  max-width: 500px;
+  box-sizing: border-box;
 }
 
 /* #comment-container {
