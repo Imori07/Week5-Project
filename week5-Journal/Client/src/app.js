@@ -114,6 +114,7 @@ const BASE_URL = 'https://week5-project-09nc.onrender.com';
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
+  console.log(data);
   commentContainer.innerHTML = '';
   data
     .sort((a, b) => b.created_at - a.created_at)
@@ -154,7 +155,7 @@ function createReview(review) {
   reviewDiv.className = 'review';
   reviewDiv.dataset.id = review.id;
 
-  const username = createParagraph('username', review.username);
+  const username = createParagraph('username', review.name);
 
   const description = createParagraph(
     'review-description',
@@ -170,8 +171,8 @@ function createReview(review) {
   const reviewDate = createParagraph('date', formattedDate);
 
   reviewDiv.appendChild(username);
-  reviewDiv.appendChild(description);
   reviewDiv.appendChild(image);
+  reviewDiv.appendChild(description);
   reviewDiv.appendChild(reviewDate);
   commentContainer.appendChild(reviewDiv);
 
