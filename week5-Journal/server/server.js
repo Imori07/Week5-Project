@@ -49,7 +49,11 @@ app.get('/reviews', async (req, res) => {
 // Create new data (Insert new review entry)
 app.post('/reviews', async (req, res) => {
   const { name, review_description, image_url, rating } = req.body; // Get review details from the request body
-
+  console.log(req.body);
+  // console.log( name);
+  // console.log(review_description);
+  // console.log(image_url);
+  // console.log(rating);
   // Insert the new review entry into the database
   try {
     const { rows } = await db.query(

@@ -109,7 +109,9 @@
 const form = document.getElementById("review_form");
 const commentContainer = document.getElementById("comment-container");
 
-const BASE_URL = "https://week5-project-09nc.onrender.com";
+
+const BASE_URL = 'https://week5-project-09nc.onrender.com';
+
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
@@ -122,27 +124,36 @@ const fetchReviews = async () => {
 
 fetchReviews();
 
-const postReviews = async () => {
-  const formData = {
-    name: "Bob",
-    review_description: "Woopppss",
-    image_url: "www.something.com",
-    rating: 4,
-  };
+
+const postReviews = async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const formEntries = Object.fromEntries(formData);
+
+  console.log(formEntries);
 
   const response = await fetch(`${BASE_URL}/reviews`, {
-    method: "POST",
+    method: 'POST',
+
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData),
+    body: JSON.stringify(formEntries),
   });
-
-  const data = await response.json();
-  console.log(data);
+  try {
+    if (response.ok) {
+      await fetchReviews();
+    } else {
+      console.log("couldn't fetch reviews");
+    }
+  } catch (error) {
+    console.log('Error:', error);
+    console.log('Error:', error);
+  }
 };
 
-// postReviews();
+form.addEventListener('submit', postReviews);
 
 function createReview(review) {
   const reviewDiv = document.createElement("div");
