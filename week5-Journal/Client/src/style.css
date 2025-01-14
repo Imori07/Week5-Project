@@ -13,14 +13,17 @@ body {
 }
 
 #review_form {
-  margin-top: 20%;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 30%;
+  max-width: 400px;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  max-width: auto;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 /* //form style taken from gpt// */
 #review_form label {
@@ -78,24 +81,24 @@ body {
 }
 
 #comment-container {
-  position: fixed;
-  top: 10%;
-  right: 0;
-  width: 50%;
-  height: 100vh;
+  margin-left: 35%;
+  width: 60%;
+  height: 80vh;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .review {
   background-color: #ffffff;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 .review-image {
-  height: 20rem;
-  width: 30rem;
+  max-height: 15rem;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 8px 0;
 }
