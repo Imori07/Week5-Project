@@ -1,8 +1,8 @@
 // Import setup
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import pg from "pg";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import pg from 'pg';
 dotenv.config();
 
 // Initialize Express app
@@ -21,12 +21,13 @@ app.listen(PORT, () => {
 });
 
 // Root route to confirm server is running
-app.get("/", (req, res) => {
-  res.send("This is the root route");
+app.get('/', (req, res) => {
+  res.send('This is the root route');
 });
 
 // Connection string
 const dbConnectionString = process.env.DATABASE_URL;
+console.log(process.env.DATABASE_URL);
 
 // Databse pool setup
 export const db = new pg.Pool({
@@ -34,19 +35,34 @@ export const db = new pg.Pool({
 });
 
 // Read from database
-app.get("/reviews", async (req, res) => {
-  const query = await db.query(`SELECT * FROM reviews`);
-  res.json(query.rows);
+app.get('/reviews', async (req, res) => {
+  try {
+    const { rows } = await db.query(`SELECT * FROM reviews`);
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'No reviews found' });
+    }
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ message: 'Server is borked' });
+  }
 });
 
 // Create new data (Insert new review entry)
-app.post("/reviews", async (req, res) => {
+app.post('/reviews', async (req, res) => {
   const { name, review_description, image_url, rating } = req.body; // Get review details from the request body
 
   // Insert the new review entry into the database
-  const query = await db.query(
-    `INSERT INTO reviews (name, review_description, image_url, rating) VALUES ($1, $2, $3, $4) RETURNING *`,
-    [name, review_description, image_url, rating]
-  );
-  res.status(201).json(query.rows[0]); // Return the inserted row as a response
+  try {
+    const { rows } = await db.query(
+      `INSERT INTO reviews (name, review_description, image_url, rating) VALUES ($1, $2, $3, $4) RETURNING *`,
+      [name, review_description, image_url, rating]
+    );
+
+    res.status(201).json(rows[0]); // Return the inserted row
+  } catch (error) {
+    console.error('Error while submiiting review:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while submitting the review.' });
+  }
 });
