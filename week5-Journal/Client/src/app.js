@@ -156,7 +156,7 @@ function createReview(review) {
     review.review_description
   );
 
-  const image = createParagraph('review-image', review.image_url);
+  const image = createImage('review-image', review.image_url);
 
   const formattedDate = new Intl.DateTimeFormat('en-GB').format(
     new Date(review.created_at)
