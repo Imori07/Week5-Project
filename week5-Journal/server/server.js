@@ -69,3 +69,16 @@ app.post('/reviews', async (req, res) => {
       .json({ error: 'An error occurred while submitting the review.' });
   }
 });
+
+app.delete('/reviews', async (req, res) => {
+  const { id } = req.body;
+  try {
+    const result = await db.query('DELETE FROM reviews WHERE id = $1', [id]);
+    if (result.rowCount > 0) {
+      res.status(200).json({ message: 'Delete request processed' });
+    }
+  } catch (error) {
+    console.error('Error deleting review:', error);
+    res.status(500).json({ error: 'Error while deleting review' });
+  }
+});

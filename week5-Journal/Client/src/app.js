@@ -109,7 +109,7 @@
 const form = document.getElementById('review_form');
 const commentContainer = document.getElementById('comment-container');
 
-const BASE_URL = 'https://week5-project-09nc.onrender.com';
+const BASE_URL = 'http://localhost:8080';
 
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
@@ -150,6 +150,30 @@ const postReviews = async (e) => {
 
 form.addEventListener('submit', postReviews);
 
+async function handleDeleteReview() {
+  const commentDiv = this.closest('div');
+  const id = commentDiv.dataset.id;
+  console.log(id);
+
+  console.log('first');
+
+  try {
+    const response = await fetch(`${BASE_URL}/reviews`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (response.ok) {
+      await fetchReviews();
+    }
+  } catch (error) {
+    console.error('Error during delete request:', error);
+  }
+}
+
 function createReview(review) {
   const reviewDiv = document.createElement('div');
   reviewDiv.className = 'review';
@@ -172,11 +196,18 @@ function createReview(review) {
 
   const rating = createParagraph('rating', `${'⭐'.repeat(review.rating)}`);
 
+  const deleteButton = createButton(
+    'fa-solid fa-xmark delete-btn',
+    'delete review'
+  );
+
+  deleteButton.addEventListener('click', handleDeleteReview);
   reviewDiv.appendChild(username);
   reviewDiv.appendChild(image);
   reviewDiv.appendChild(description);
   reviewDiv.appendChild(reviewDate);
   reviewDiv.appendChild(rating);
+  reviewDiv.appendChild(deleteButton);
   commentContainer.appendChild(reviewDiv);
 
   return reviewDiv;
