@@ -195,3 +195,32 @@ function createImage(className, url) {
   image.src = url;
   return image;
 }
+
+// delete button
+async function handleDeleteComment() {
+  const reviewDiv = this.closest("div");
+  const id = reviewDiv.dataset.id;
+
+  try {
+    const response = await fetch(`${BASE_URL}/reviews`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (response.ok) {
+      await fetchComments();
+    }
+  } catch (error) {
+    console.error("Error during delete request:", error);
+  }
+}
+
+function createButton(className, text) {
+  const button = document.createElement("i");
+  button.className = className;
+  button.title = text;
+  return button;
+}
