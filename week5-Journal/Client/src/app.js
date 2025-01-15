@@ -172,6 +172,13 @@ function createReview(review) {
 
   const rating = createParagraph("rating", `${"⭐".repeat(review.rating)}`);
 
+  const deleteButton = createButton(
+    "fa-solid fa-xmark delete-btn",
+    "delete review"
+  );
+  deleteButton.addEventListener("click", handleDeleteComment);
+
+  reviewDiv.appendChild(deleteButton);
   reviewDiv.appendChild(username);
   reviewDiv.appendChild(image);
   reviewDiv.appendChild(description);
@@ -224,12 +231,3 @@ function createButton(className, text) {
   button.title = text;
   return button;
 }
-
-const reviewDate = createParagraph("date", formattedDate);
-const deleteButton = createButton(
-  "fa-solid fa-xmark delete-btn",
-  "delete review"
-);
-
-deleteButton.addEventListener("click", handleDeleteComment);
-reviewDiv.appendChild(deleteButton);
