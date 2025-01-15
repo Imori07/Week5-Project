@@ -1,8 +1,8 @@
 // Import setup
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import pg from 'pg';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import pg from "pg";
 dotenv.config();
 
 // Initialize Express app
@@ -21,8 +21,8 @@ app.listen(PORT, () => {
 });
 
 // Root route to confirm server is running
-app.get('/', (req, res) => {
-  res.send('This is the root route');
+app.get("/", (req, res) => {
+  res.send("This is the root route");
 });
 
 // Connection string
@@ -34,20 +34,20 @@ export const db = new pg.Pool({
 });
 
 // Read from database
-app.get('/reviews', async (req, res) => {
+app.get("/reviews", async (req, res) => {
   try {
     const { rows } = await db.query(`SELECT * FROM reviews`);
     if (rows.length === 0) {
-      return res.status(404).json({ message: 'No reviews found' });
+      return res.status(404).json({ message: "No reviews found" });
     }
     res.json(rows);
   } catch (error) {
-    res.status(500).json({ message: 'Server is borked' });
+    res.status(500).json({ message: "Server is borked" });
   }
 });
 
 // Create new data (Insert new review entry)
-app.post('/reviews', async (req, res) => {
+app.post("/reviews", async (req, res) => {
   const { name, review_description, image_url, rating } = req.body; // Get review details from the request body
   console.log(req.body);
   // console.log( name);
@@ -63,10 +63,25 @@ app.post('/reviews', async (req, res) => {
 
     res.status(201).json(rows[0]); // Return the inserted row
   } catch (error) {
-    console.error('Error while submiiting review:', error);
+    console.error("Error while submiiting review:", error);
     res
       .status(500)
-      .json({ error: 'An error occurred while submitting the review.' });
+      .json({ error: "An error occurred while submitting the review." });
+  }
+});
+
+// delete button
+app.delete("/reviews", async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const result = await db.query("DELETE FROM reviews WHERE id = $1", [id]);
+
+    if (result.rowCount > 0) {
+      res.status(200).json({ message: "Delete request processed" });
+    }
+  } catch (error) {
+    console.error("Error deleting comment:", error);
   }
 });
 
