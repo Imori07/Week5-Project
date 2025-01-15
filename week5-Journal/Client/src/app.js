@@ -218,7 +218,7 @@ async function handleDeleteComment() {
     });
 
     if (response.ok) {
-      await fetchComments();
+      await fetchReviews();
     }
   } catch (error) {
     console.error("Error during delete request:", error);
