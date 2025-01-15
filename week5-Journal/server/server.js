@@ -49,12 +49,6 @@ app.get("/reviews", async (req, res) => {
 // Create new data (Insert new review entry)
 app.post("/reviews", async (req, res) => {
   const { name, review_description, image_url, rating } = req.body; // Get review details from the request body
-  console.log(req.body);
-  // console.log( name);
-  // console.log(review_description);
-  // console.log(image_url);
-  // console.log(rating);
-  // Insert the new review entry into the database
   try {
     const { rows } = await db.query(
       `INSERT INTO reviews (name, review_description, image_url, rating) VALUES ($1, $2, $3, $4) RETURNING *`,
@@ -73,14 +67,13 @@ app.post("/reviews", async (req, res) => {
 // delete button
 app.delete("/reviews", async (req, res) => {
   const { id } = req.body;
-
   try {
     const result = await db.query("DELETE FROM reviews WHERE id = $1", [id]);
-
     if (result.rowCount > 0) {
       res.status(200).json({ message: "Delete request processed" });
     }
   } catch (error) {
-    console.error("Error deleting comment:", error);
+    console.error("Error deleting review:", error);
+    res.status(500).json({ error: "Error while deleting review" });
   }
 });

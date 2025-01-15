@@ -114,7 +114,6 @@ const BASE_URL = "https://week5-project-09nc.onrender.com";
 const fetchReviews = async () => {
   const response = await fetch(`${BASE_URL}/reviews`);
   const data = await response.json();
-  console.log(data);
   commentContainer.innerHTML = "";
   data
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
@@ -125,6 +124,12 @@ fetchReviews();
 
 const postReviews = async (e) => {
   e.preventDefault();
+  const reviewDescription = document.querySelector("#review_description").value;
+
+  if (reviewDescription.length < 15) {
+    alert("Must be more than 15 characters long");
+    return;
+  }
 
   const formData = new FormData(form);
   const formEntries = Object.fromEntries(formData);
@@ -149,6 +154,34 @@ const postReviews = async (e) => {
 };
 
 form.addEventListener("submit", postReviews);
+
+async function handleDeleteReview() {
+  const deleteConfirmation = confirm(
+    "Are you sure you want to delete this review?"
+  );
+
+  if (!deleteConfirmation) {
+    return;
+  }
+
+  const commentDiv = this.closest("div");
+  const id = commentDiv.dataset.id;
+  try {
+    const response = await fetch(`${BASE_URL}/reviews`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (response.ok) {
+      await fetchReviews();
+    }
+  } catch (error) {
+    console.error("Error during delete request:", error);
+  }
+}
 
 function createReview(review) {
   const reviewDiv = document.createElement("div");
@@ -176,14 +209,17 @@ function createReview(review) {
     "fa-solid fa-xmark delete-btn",
     "delete review"
   );
-  deleteButton.addEventListener("click", handleDeleteComment);
 
-  reviewDiv.appendChild(deleteButton);
+  deleteButton.addEventListener("click", handleDeleteReview);
+
   reviewDiv.appendChild(username);
   reviewDiv.appendChild(image);
   reviewDiv.appendChild(description);
   reviewDiv.appendChild(reviewDate);
   reviewDiv.appendChild(rating);
+
+  reviewDiv.appendChild(deleteButton);
+
   commentContainer.appendChild(reviewDiv);
 
   return reviewDiv;
@@ -201,28 +237,6 @@ function createImage(className, url) {
   image.className = className;
   image.src = url;
   return image;
-}
-
-// delete button
-async function handleDeleteComment() {
-  const reviewDiv = this.closest("div");
-  const id = reviewDiv.dataset.id;
-
-  try {
-    const response = await fetch(`${BASE_URL}/reviews`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    });
-
-    if (response.ok) {
-      await fetchReviews();
-    }
-  } catch (error) {
-    console.error("Error during delete request:", error);
-  }
 }
 
 function createButton(className, text) {
