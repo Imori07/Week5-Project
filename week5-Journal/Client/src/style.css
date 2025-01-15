@@ -6,6 +6,10 @@
 
 body {
   background-image: url("https://preview.redd.it/a-minimalistic-view-of-the-mountains-1920x1080-v0-w3l0n3tdpsla1.jpg?auto=webp&s=f0239acd62eb5edeb3d0b9bddf6a7aa09c8303ae");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
@@ -28,11 +32,8 @@ h1 {
 }
 
 #review_form {
-  position: fixed;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  width: 30%;
+  margin: 80px auto 20px;
+  width: 40%;
   max-width: 400px;
   background-color: #ffffff;
   padding: 20px;
@@ -40,8 +41,10 @@ h1 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   overflow-y: auto;
+  position: relative;
+  z-index: 10;
 }
-/* //form style taken from gpt// */
+
 #review_form label {
   display: block;
   margin-bottom: 5px;
@@ -91,17 +94,19 @@ h1 {
 #review_form input:focus,
 #review_form textarea:focus,
 #review_form select:focus {
-  border-color: #4caf50;
+  border-color: rgba(0, 0, 0, 0.5);
   outline: none;
-  box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 #comment-container {
-  margin-left: 37%;
-  width: 58%;
-  height: 80vh;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
   padding: 20px;
   overflow-y: auto;
+  z-index: 5;
+  position: relative;
 }
 
 .review {
@@ -115,40 +120,6 @@ h1 {
 }
 
 .review .delete-btn {
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-  font-weight: bold;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  border: none;
-  cursor: pointer;
-}
-
-.review-image {
-  max-height: 15rem;
-  max-width: 100%;
-  object-fit: cover;
-  margin: 8px 0;
-}
-
-.comment {
-  margin: 20px;
-  padding: 15px 20px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  position: relative;
-  word-wrap: break-word;
-}
-
-.comment .delete-btn {
   width: 20px;
   height: 20px;
   background-color: red;
@@ -182,7 +153,7 @@ a[href="./about/index.html"] {
 a[href="./about/index.html"]:hover {
   background-color: rgba(50, 50, 50, 0.8);
 }
-/* Responsive Design */
+
 @media (max-width: 768px) {
   #review_form {
     width: 90%;
