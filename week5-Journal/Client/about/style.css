@@ -1,3 +1,9 @@
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +32,7 @@ section {
 }
 
 .third {
-  background-image: url(https://wallpapers.com/images/featured/mountain-aesthetic-background-r903o7vp656qi52l.jpg);
+  background-image: url(https://wallpapers.com/images/high/minimalist-mountain-55imht5y720z6emw.webp);
 }
 
 /* MAIN TITLE */
