@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* BACKGROUND */
+section {
+  display: block;
+}
+
+#bop {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.first {
+  background-image: url("https://preview.redd.it/a-minimalistic-view-of-the-mountains-1920x1080-v0-w3l0n3tdpsla1.jpg?auto=webp&s=f0239acd62eb5edeb3d0b9bddf6a7aa09c8303ae");
+}
+
+.second {
+  background-image: url(https://wallpapers.com/images/hd/mountain-aesthetic-3pbvwsg3h7ksq2li.jpg);
+}
+
+.third {
+  background-image: url(https://wallpapers.com/images/featured/mountain-aesthetic-background-r903o7vp656qi52l.jpg);
+}
+
+/* MAIN TITLE */
+header {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  display: flex;
+  padding: 2.5rem 3rem;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.main-title {
+  font-size: 2rem;
+  display: block;
+  font-weight: bold;
+}
+
+/* SECTION ONE */
+.firstdiv {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 350px;
+  left: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SECTION TWO */
+.seconddiv {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 350px;
+  left: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SECTION THREE */
+.thirddiv {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 350px;
+  left: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* FOOTER */
+footer {
+  color: rgb(65, 65, 65);
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(12, 8, 12);
+}
