@@ -117,7 +117,7 @@ const fetchReviews = async () => {
   console.log(data);
   commentContainer.innerHTML = '';
   data
-    .sort((a, b) => b.created_at - a.created_at)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
     .forEach((review) => createReview(review));
 };
 
@@ -170,10 +170,13 @@ function createReview(review) {
 
   const reviewDate = createParagraph('date', formattedDate);
 
+  const rating = createParagraph('rating', `${'⭐'.repeat(review.rating)}`);
+
   reviewDiv.appendChild(username);
   reviewDiv.appendChild(image);
   reviewDiv.appendChild(description);
   reviewDiv.appendChild(reviewDate);
+  reviewDiv.appendChild(rating);
   commentContainer.appendChild(reviewDiv);
 
   return reviewDiv;
