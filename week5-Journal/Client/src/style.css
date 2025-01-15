@@ -1,22 +1,29 @@
-h1 {
-  position: absolute;
-  top: 20px;
-  text-align: center;
-  width: 100%;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f8efef;
-}
 body {
   background-image: url("https://img.freepik.com/premium-photo/tropical-island-with-palm-trees-sunset-background_1188452-2551.jpg?w=1060");
   background-size: cover;
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #f8efef;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 #review_form {
   position: fixed;
   top: 10%;
-  left: 0;
+  left: 5%;
   width: 30%;
   max-width: 400px;
   background-color: #ffffff;
@@ -82,8 +89,8 @@ body {
 }
 
 #comment-container {
-  margin-left: 35%;
-  width: 60%;
+  margin-left: 37%;
+  width: 58%;
   height: 80vh;
   padding: 20px;
   overflow-y: auto;
@@ -102,4 +109,44 @@ body {
   max-width: 100%;
   object-fit: cover;
   margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  #review_form {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  #comment-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 25px;
+    padding: 5px 10px;
+  }
+
+  #review_form {
+    padding: 15px;
+  }
+
+  #review_form input,
+  #review_form textarea,
+  #review_form select {
+    font-size: 12px;
+  }
+
+  #review_form button {
+    font-size: 12px;
+  }
 }
