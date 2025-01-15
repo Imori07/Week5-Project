@@ -151,6 +151,8 @@ const postReviews = async (e) => {
   } catch (error) {
     console.log('Error:', error);
   }
+
+  form.reset();
 };
 
 form.addEventListener('submit', postReviews);
