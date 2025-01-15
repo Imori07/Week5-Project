@@ -22,8 +22,9 @@ h1 {
 
 #review_form {
   position: fixed;
-  top: 10%;
+  top: 50%;
   left: 5%;
+  transform: translateY(-50%);
   width: 30%;
   max-width: 400px;
   background-color: #ffffff;
