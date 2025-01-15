@@ -224,3 +224,12 @@ function createButton(className, text) {
   button.title = text;
   return button;
 }
+
+const reviewDate = createParagraph("date", formattedDate);
+const deleteButton = createButton(
+  "fa-solid fa-xmark delete-btn",
+  "delete review"
+);
+
+deleteButton.addEventListener("click", handleDeleteComment);
+reviewDiv.appendChild(deleteButton);
