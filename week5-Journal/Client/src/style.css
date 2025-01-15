@@ -1,9 +1,16 @@
-body {
-  background-image: url("https://preview.redd.it/a-minimalistic-view-of-the-mountains-1920x1080-v0-w3l0n3tdpsla1.jpg?auto=webp&s=f0239acd62eb5edeb3d0b9bddf6a7aa09c8303ae");
-  background-size: cover;
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://preview.redd.it/a-minimalistic-view-of-the-mountains-1920x1080-v0-w3l0n3tdpsla1.jpg?auto=webp&s=f0239acd62eb5edeb3d0b9bddf6a7aa09c8303ae");
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
 }
 
 h1 {
@@ -66,7 +73,7 @@ h1 {
 }
 
 #review_form button {
-  background-color: #4caf50;
+  background-color: rgba(0, 0, 0, 0.5);
   color: #ffffff;
   border: none;
   padding: 10px;
@@ -78,7 +85,7 @@ h1 {
 }
 
 #review_form button:hover {
-  background-color: #45a049;
+  background-color: rgba(50, 50, 50, 0.8);
 }
 
 #review_form input:focus,
@@ -159,31 +166,30 @@ h1 {
   cursor: pointer;
 }
 
-a {
-  position: absolute;
-  bottom: auto;
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
+a[href="./about/index.html"] {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
   font-size: 16px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: fit-content;
 }
 
-a:hover {
-  background-color: #45a049;
+a[href="./about/index.html"]:hover {
+  background-color: rgba(50, 50, 50, 0.8);
 }
-
+/* Responsive Design */
 @media (max-width: 768px) {
   #review_form {
-    position: static;
-    margin: 20px auto;
     width: 90%;
+    margin: 60px auto;
   }
 
   #comment-container {
-    margin-left: 0;
     width: 100%;
     padding: 10px;
   }
@@ -191,6 +197,10 @@ a:hover {
   h1 {
     font-size: 28px;
     padding: 8px 12px;
+  }
+
+  a[href="./about/index.html"] {
+    width: 90%;
   }
 }
 
@@ -212,5 +222,10 @@ a:hover {
 
   #review_form button {
     font-size: 12px;
+  }
+
+  a[href="./about/index.html"] {
+    font-size: 14px;
+    padding: 8px 15px;
   }
 }
