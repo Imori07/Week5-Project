@@ -139,6 +139,20 @@ h1 {
   cursor: pointer;
 }
 
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+a:hover {
+  background-color: #45a049;
+}
+
 @media (max-width: 768px) {
   #review_form {
     position: static;
