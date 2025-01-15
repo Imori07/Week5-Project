@@ -195,3 +195,10 @@ function createImage(className, url) {
   image.src = url;
   return image;
 }
+
+function createButton(className, text) {
+  const button = document.createElement('i');
+  button.className = className;
+  button.title = text;
+  return button;
+}
