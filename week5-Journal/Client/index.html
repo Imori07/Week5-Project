@@ -11,56 +11,53 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./src/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <script src="./src/app.js" defer></script>
     <title>Journal</title>
   </head>
   <body>
     <h1>Travel log</h1>
-    <form id="review_form">
-      <label for="username">Username:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Write your full name"
-        required
-      />
-      <label for="Review">Review:</label>
-      <textarea
-        name="review_description"
-        id="review_description"
-        rows="10"
-        placeholder="Please leave a comment"
-        required
-      ></textarea>
+    <main id="main-container">
+      <form id="review_form">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Write your full name"
+          required
+        />
+        <label for="Review">Review:</label>
+        <textarea
+          name="review_description"
+          id="review_description"
+          rows="10"
+          placeholder="Please leave a comment"
+          required
+        ></textarea>
 
-      <label for="upload-url">URL:</label>
-      <input
-        type="url"
-        id="image_url"
-        name="image_url"
-        placeholder="enter your image URL"
-      />
+        <label for="upload-url">URL:</label>
+        <input
+          type="url"
+          id="image_url"
+          name="image_url"
+          placeholder="enter your image URL"
+        />
 
-      <!-- Ask team if we need this option -->
-      <label for="rating">Rating(from 1 to 5):</label>
-      <select id="rating" name="rating" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
-    <div id="comment-container"></div>
+        <!-- Ask team if we need this option -->
+        <label for="rating">Rating(from 1 to 5):</label>
+        <select id="rating" name="rating" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="comment-container"></div>
+    </main>
+
     <a href="./about/index.html">Developers team</a>
   </body>
 </html>
