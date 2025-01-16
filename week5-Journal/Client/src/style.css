@@ -200,6 +200,11 @@ a[href='./about/index.html']:hover {
   .content-container {
     flex-direction: column;
     align-items: center;
+    padding: 0;
+  }
+
+  #comment-container {
+    padding: 0;
   }
 
   #review_form {
