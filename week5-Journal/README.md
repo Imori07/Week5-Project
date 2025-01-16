@@ -88,4 +88,6 @@ If you want to work with this repository locally you will need to clone it onto 
 
 ##### Run app in browser
 
-## `npm run dev`
+`npm run dev`
+
+---
