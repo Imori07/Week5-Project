@@ -145,14 +145,13 @@ const postReviews = async (e) => {
   try {
     if (response.ok) {
       await fetchReviews();
+      form.reset();
     } else {
       console.log("couldn't fetch reviews");
     }
   } catch (error) {
     console.log('Error:', error);
   }
-
-  form.reset();
 };
 
 form.addEventListener('submit', postReviews);
