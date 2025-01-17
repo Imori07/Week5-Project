@@ -89,10 +89,11 @@ a[href='./about/index.html']:hover {
 }
 
 #review_form button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
+  background-color: rgba(110, 235, 94, 0.5);
+  color: black;
   border: none;
   padding: 10px;
+  border: 2px solid #333;
   border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
@@ -101,7 +102,7 @@ a[href='./about/index.html']:hover {
 }
 
 #review_form button:hover {
-  background-color: rgba(50, 50, 50, 0.8);
+  background-color: rgba(11, 187, 38, 0.5);
 }
 
 #review_form input:focus,
